@@ -63,6 +63,7 @@ Plugin 'davdai01/nerdtree-zos-plugin'
 " Plugin 'mattn/webapi-vim'
 " Plugin 'mattn/gist-vim'
 Plugin 'vimwiki/vimwiki'
+Plugin 'diepm/vim-rest-console'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
