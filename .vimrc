@@ -41,10 +41,11 @@ Plugin 'tmhedberg/matchit'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
-" Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
-Plugin 'itchyny/lightline.vim'
+" Plugin 'itchyny/lightline.vim'
 Plugin 'mattn/emmet-vim'
+Plugin 'vim-airline/vim-airline'
 Plugin 'elzr/vim-json'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
@@ -58,6 +59,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'davdai01/jcl.vim'
 Plugin 'moll/vim-node'
 Plugin 'mxw/vim-jsx'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'justinj/vim-react-snippets'
 Plugin 'davdai01/nerdtree-zos-plugin'
 " Plugin 'lambdalisue/vim-gista'
@@ -65,6 +67,7 @@ Plugin 'davdai01/nerdtree-zos-plugin'
 " Plugin 'mattn/gist-vim'
 Plugin 'vimwiki/vimwiki'
 Plugin 'diepm/vim-rest-console'
+" Plugin 'vitalk/vim-simple-todo'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -87,7 +90,7 @@ filetype plugin indent on    " required
 
 
 set diffexpr=MyDiff()
-function MyDiff()
+function! MyDiff()
   let opt = '-a --binary '
   if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
   if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
@@ -139,6 +142,7 @@ set smartcase
 set incsearch
 set showmatch
 set hlsearch
+set updatetime=250
 
 let mapleader = ","
 
@@ -215,9 +219,6 @@ let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 " let g:syntastic_javascript_checkers = ['eslint']
 
-" Open markdown files with Chrome.
-autocmd BufEnter *.md,*.markdown exe 'noremap <F5> :!start "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" %:p<CR>'
-
 au BufEnter *.md,*.markdown setfiletype markdown
 
 autocmd FileType markdown setlocal spell
@@ -232,6 +233,10 @@ let delimitMate_jump_expansion = 1
 "   \ 'syntax': 'markdown', 'ext': '.vimwiki', 'template_ext': '.tpl',
 "   \ 'custom_wiki2html': 'vimwiki_markdown'
 "   \ }]
-let g:vimwiki_list = [{'path': 'C:\Users\davdai01\SkyDrive\Workspace\vimwiki\', 'auto_export': 0,
-  \ 'path_html': 'C:\Users\davdai01\SkyDrive\Workspace\vimwiki\site_html\'
-  \ }]
+let g:vimwiki_hl_cb_checked = 1
+
+let g:vimwiki_list = [{'path': '~/vimwiki/default', 'auto_export': 0,
+  \ 'path_html': '~/vimwiki/default/html/'}, 
+  \ {'path': '~/vimwiki/ctp120_test/', 'path_html': '~/vimwiki/ctp120_test/html/'}]
+
+autocmd BufEnter *.wiki exe 'nnoremap <F5> :VimwikiAll2HTML<CR>:Vimwiki2HTMLBrowse<CR>:syn on<CR>'
