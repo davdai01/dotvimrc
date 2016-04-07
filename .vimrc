@@ -176,7 +176,8 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 " let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'  " Windows
-let g:ctrlp_user_command = 'find %s -type f'  " Linux
+" let g:ctrlp_user_command = 'find %s -type f'  " Linux
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'  " Linux
 
 let g:user_emmet_leader_key='<C-e>'
 
@@ -193,6 +194,7 @@ let g:SuperTabDefaultCompletionType = "context"
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%{fugitive#statusline()} 
 set statusline+=%*
 let g:ag_working_path_mode="r"
 
