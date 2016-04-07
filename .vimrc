@@ -68,6 +68,7 @@ Plugin 'davdai01/nerdtree-zos-plugin'
 Plugin 'vimwiki/vimwiki'
 Plugin 'diepm/vim-rest-console'
 Plugin 'rking/ag.vim'
+Plugin 'godlygeek/tabular'
 " Plugin 'vitalk/vim-simple-todo'
 
 " All of your Plugins must be added before the following line
