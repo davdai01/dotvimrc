@@ -67,6 +67,7 @@ Plugin 'davdai01/nerdtree-zos-plugin'
 " Plugin 'mattn/gist-vim'
 Plugin 'vimwiki/vimwiki'
 Plugin 'diepm/vim-rest-console'
+Plugin 'rking/ag.vim'
 " Plugin 'vitalk/vim-simple-todo'
 
 " All of your Plugins must be added before the following line
@@ -192,6 +193,7 @@ let g:SuperTabDefaultCompletionType = "context"
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+let g:ag_working_path_mode="r"
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
