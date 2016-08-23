@@ -133,8 +133,11 @@ set expandtab
 set lines=48
 set columns=135
 
-set guioptions -=m
-set guioptions -=T
+if has("gui_running")
+  set guioptions -=m
+  set guioptions -=T
+  set guifont=Ubuntu\ Mono\ 12
+endif
 
 set noswapfile
 set nobackup
