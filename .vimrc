@@ -120,6 +120,9 @@ function! MyDiff()
 endfunction
 
 function! CT(tag)
+  " Usage:
+  " :call CT("MYTAG")
+  " then PF2 to repeat
   let line = strpart(getline('.'), 0, 72)
   let len = strlen(line)
   let filler = ''
