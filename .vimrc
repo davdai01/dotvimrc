@@ -8,7 +8,6 @@ let path='~/.vim/bundle'
 call vundle#begin(path)
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
-
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
@@ -62,7 +61,9 @@ Plugin 'moll/vim-node'
 Plugin 'mxw/vim-jsx'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'justinj/vim-react-snippets'
+" Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'davdai01/nerdtree-zos-plugin'
+" Plugin 'Valloric/YouCompleteMe'
 " Plugin 'lambdalisue/vim-gista'
 " Plugin 'mattn/webapi-vim'
 " Plugin 'mattn/gist-vim'
@@ -70,6 +71,7 @@ Plugin 'vimwiki/vimwiki'
 Plugin 'diepm/vim-rest-console'
 Plugin 'rking/ag.vim'
 Plugin 'godlygeek/tabular'
+Plugin 'flazz/vim-colorschemes'
 " Plugin 'vitalk/vim-simple-todo'
 
 " All of your Plugins must be added before the following line
@@ -116,7 +118,22 @@ function! MyDiff()
   endif
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
+
+function! CT(tag)
+  let line = strpart(getline('.'), 0, 72)
+  let len = strlen(line)
+  let filler = ''
+  if len < 72
+    let filler_len = 72 - len
+    let filler = repeat(' ', filler_len)
+  endif
+  let newline = printf("%s%s%s", line, filler, a:tag)
+  call setline('.', newline)
+  " echo newline
+endfunction
+
 "set go=
+" colo industry
 colo torte
 sy on
 set sw=2
@@ -157,6 +174,8 @@ nnoremap <leader><space> :noh<cr>
 map <C-d> :NERDTreeToggle<CR>
 map <C-o> :ConqueTermSplit bash<CR>
 map <C-i> :ConqueTermTab bash<CR>
+
+map <F2> @:
 
 imap <F9> <Plug>delimitMateS-Tab
 
