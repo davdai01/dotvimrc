@@ -119,11 +119,10 @@ function! MyDiff()
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
 
-function! CT(tag)
-  " Usage:
-  " :call CT("MYTAG")
-  " then PF2 to repeat
-  let line = strpart(getline('.'), 0, 72)
+let g:myCOBOLTag = ''
+
+function! TagLine(lnum, tag)
+  let line = strpart(getline(a:lnum), 0, 72)
   let len = strlen(line)
   let filler = ''
   if len < 72
@@ -132,8 +131,32 @@ function! CT(tag)
   endif
   let newline = printf("%s%s%s", line, filler, a:tag)
   call setline('.', newline)
+
+endfunction
+" let myCOBOLTag = ''
+function! CT(tag)
+  " Usage:
+  " :call CT("MYTAG")
+  " then PF2 to repeat
+
+  let g:myCOBOLTag = a:tag
+  
+  let slnum = line("v")
+  let elnum = line('.')
+  
+  while slnum <= elnum
+    call TagLine(slnum, a:tag)
+    let slnum = slnum + 1
+  endwhile
+
   " echo newline
 endfunction
+
+function! ApplyMyCOBOLTag()
+  call CT(g:myCOBOLTag)
+endfunction
+
+" nmap t :call CT(myCOBOLTag)<CR>
 
 "set go=
 " colo industry
@@ -178,7 +201,7 @@ map <C-d> :NERDTreeToggle<CR>
 map <C-o> :ConqueTermSplit bash<CR>
 map <C-i> :ConqueTermTab bash<CR>
 
-map <F2> @:
+map <F2> :call ApplyMyCOBOLTag()<CR>
 
 imap <F9> <Plug>delimitMateS-Tab
 
