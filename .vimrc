@@ -133,7 +133,7 @@ function! TagLine(lnum, tag)
   call setline('.', newline)
 
 endfunction
-" let myCOBOLTag = ''
+
 function! CT(tag)
   " Usage:
   " :call CT("MYTAG")
@@ -155,8 +155,6 @@ endfunction
 function! ApplyMyCOBOLTag()
   call CT(g:myCOBOLTag)
 endfunction
-
-" nmap t :call CT(myCOBOLTag)<CR>
 
 "set go=
 " colo industry
