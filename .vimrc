@@ -72,6 +72,9 @@ Plugin 'diepm/vim-rest-console'
 Plugin 'rking/ag.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+" Plugin 'soramugi/auto-ctags.vim'
 " Plugin 'vitalk/vim-simple-todo'
 
 " All of your Plugins must be added before the following line
@@ -195,6 +198,18 @@ let mapleader = ","
 
 nnoremap <leader><space> :noh<cr>
 
+" " ctags
+" let g:auto_ctags = 1
+" let g:auto_ctags_directory_list=['.git', '.svn']
+" let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
+" let g:auto_ctags_filetype_mode = 1
+
+let g:easytags_autorecurse = 1
+" set tags=./tags;
+" let g:easytags_dynamic_files = 1
+let g:easytags_file = '~/.vim/tags'
+let g:easytags_auto_highlight = 0
+
 map <C-d> :NERDTreeToggle<CR>
 map <C-o> :ConqueTermSplit bash<CR>
 map <C-i> :ConqueTermTab bash<CR>
@@ -246,7 +261,9 @@ set statusline+=%*
 let g:ag_working_path_mode="r"
 
 let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_loc_list_height = 2
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_lua_checkers = ["luac", "luacheck"]
