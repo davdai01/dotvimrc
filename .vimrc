@@ -74,6 +74,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
+Plugin 'sindresorhus/vim-xo'
 " Plugin 'soramugi/auto-ctags.vim'
 " Plugin 'vitalk/vim-simple-todo'
 
@@ -97,31 +98,31 @@ filetype plugin indent on    " required
 " behave mswin
 
 
-set diffexpr=MyDiff()
-function! MyDiff()
-  let opt = '-a --binary '
-  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-  let arg1 = v:fname_in
-  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-  let arg2 = v:fname_new
-  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-  let arg3 = v:fname_out
-  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  let eq = ''
-  if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
-      let cmd = '""' . $VIMRUNTIME . '\diff"'
-      let eq = '"'
-    else
-      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-    endif
-  else
-    let cmd = $VIMRUNTIME . '\diff'
-  endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-endfunction
-
+" set diffexpr=MyDiff()
+" function! MyDiff()
+"   let opt = '-a --binary '
+"   if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+"   if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+"   let arg1 = v:fname_in
+"   if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+"   let arg2 = v:fname_new
+"   if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+"   let arg3 = v:fname_out
+"   if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+"   let eq = ''
+"   if $VIMRUNTIME =~ ' '
+"     if &sh =~ '\<cmd'
+"       let cmd = '""' . $VIMRUNTIME . '\diff"'
+"       let eq = '"'
+"     else
+"       let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+"     endif
+"   else
+"     let cmd = $VIMRUNTIME . '\diff'
+"   endif
+"   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+" endfunction
+"
 let g:myCOBOLTag = ''
 
 function! TagLine(lnum, tag)
@@ -175,8 +176,8 @@ set ambiwidth=double
 set tabstop=2
 set shiftwidth=2
 set expandtab
-set lines=48
-set columns=135
+" set lines=48
+" set columns=135
 
 if has("gui_running")
   set guioptions -=m
@@ -268,6 +269,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_lua_checkers = ["luac", "luacheck"]
 let g:syntastic_lua_luacheck_args = "--no-unused-args"
+" let g:syntastic_javascript_checkers = ['xo']
 
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
