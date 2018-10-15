@@ -51,9 +51,10 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Raimondi/delimitMate'
-Plugin 'marijnh/tern_for_vim'
+" Plugin 'marijnh/tern_for_vim'
 Plugin 'ervandew/supertab'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 Plugin 'tpope/vim-endwise'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'davdai01/jcl.vim'
@@ -162,7 +163,9 @@ endfunction
 
 "set go=
 " colo industry
-colo torte
+" colo desert
+colo molokai
+
 sy on
 set sw=2
 set ts=2
@@ -216,6 +219,7 @@ map <C-o> :ConqueTermSplit bash<CR>
 map <C-i> :ConqueTermTab bash<CR>
 
 map <F2> :call ApplyMyCOBOLTag()<CR>
+" map <F8> <Plug>(ale_fix)
 
 imap <F9> <Plug>delimitMateS-Tab
 
@@ -261,15 +265,18 @@ set statusline+=%{fugitive#statusline()}
 set statusline+=%*
 let g:ag_working_path_mode="r"
 
-let g:syntastic_always_populate_loc_list = 0
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_loc_list_height = 2
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_lua_checkers = ["luac", "luacheck"]
-let g:syntastic_lua_luacheck_args = "--no-unused-args"
-" let g:syntastic_javascript_checkers = ['xo']
+" let g:syntastic_always_populate_loc_list = 0
+" let g:syntastic_auto_loc_list = 0
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_lua_checkers = ["luac", "luacheck"]
+" let g:syntastic_lua_luacheck_args = "--no-unused-args"
+" " let g:syntastic_javascript_checkers = ['xo']
+
+let g:ale_fixers = {  'javascript': ['eslint']  }
+let g:ale_linters = { 'javascript': ['eslint'] }
+let g:ale_sign_column_always = 1
+let g:ale_fix_on_save = 1
 
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
@@ -287,11 +294,12 @@ nmap f <Plug>(easymotion-s2)
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
 
-let g:jsx_ext_required = 0 " Allow JSX in normal JS files
-
+" let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+"
 " let g:syntastic_javascript_checkers = ['eslint']
 
 au BufEnter *.md,*.markdown setfiletype markdown
+au BufEnter .eslintrc setfiletype json
 
 autocmd FileType markdown setlocal spell
 
