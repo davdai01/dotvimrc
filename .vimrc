@@ -52,7 +52,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Raimondi/delimitMate'
 " Plugin 'marijnh/tern_for_vim'
-Plugin 'ervandew/supertab'
+" Plugin 'ervandew/supertab'
 " Plugin 'scrooloose/syntastic'
 Plugin 'w0rp/ale'
 Plugin 'tpope/vim-endwise'
@@ -60,7 +60,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'davdai01/jcl.vim'
 Plugin 'moll/vim-node'
 Plugin 'mxw/vim-jsx'
-Plugin 'airblade/vim-gitgutter'
+" Plugin 'airblade/vim-gitgutter'
 Plugin 'justinj/vim-react-snippets'
 " Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'davdai01/nerdtree-zos-plugin'
@@ -75,7 +75,9 @@ Plugin 'godlygeek/tabular'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
-Plugin 'sindresorhus/vim-xo'
+Plugin 'skywind3000/asyncrun.vim'
+Plugin 'mustache/vim-mustache-handlebars'
+" Plugin 'sindresorhus/vim-xo'
 " Plugin 'soramugi/auto-ctags.vim'
 " Plugin 'vitalk/vim-simple-todo'
 
@@ -145,10 +147,10 @@ function! CT(tag)
   " then PF2 to repeat
 
   let g:myCOBOLTag = a:tag
-  
+
   let slnum = line("v")
   let elnum = line('.')
-  
+
   while slnum <= elnum
     call TagLine(slnum, a:tag)
     let slnum = slnum + 1
@@ -219,7 +221,7 @@ map <C-o> :ConqueTermSplit bash<CR>
 map <C-i> :ConqueTermTab bash<CR>
 
 map <F2> :call ApplyMyCOBOLTag()<CR>
-" map <F8> <Plug>(ale_fix)
+map <F8> <Plug>(ale_fix)
 
 imap <F9> <Plug>delimitMateS-Tab
 
@@ -257,11 +259,11 @@ com! FormatJSON %!python -m json.tool
 set backspace=2
 set backspace=indent,eol,start
 
-let g:SuperTabDefaultCompletionType = "context"
+" let g:SuperTabDefaultCompletionType = "context"
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%{fugitive#statusline()} 
+set statusline+=%{fugitive#statusline()}
 set statusline+=%*
 let g:ag_working_path_mode="r"
 
@@ -273,11 +275,30 @@ let g:ag_working_path_mode="r"
 " let g:syntastic_lua_luacheck_args = "--no-unused-args"
 " " let g:syntastic_javascript_checkers = ['xo']
 
-let g:ale_fixers = {  'javascript': ['eslint']  }
-let g:ale_linters = { 'javascript': ['eslint'] }
+" ale.vim parms
+let g:ale_fixers = {
+      \  '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \  'javascript': ['eslint'],
+      \  'ruby': ['rubocop'],
+      \  'xml': ['xmllint'],
+      \ }
+
+let g:ale_linters = {
+      \  'javascript': ['eslint'],
+      \  'java': ['checkstyle', 'javac'],
+      \  'xml': ['xmllint'],
+      \ }
 let g:ale_sign_column_always = 1
 let g:ale_fix_on_save = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
 
+" AsyncRun parms
+command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
+let g:asyncrun_open = 10
+nnoremap <F10> :call asyncrun#quickfix_toggle(10)<cr>
+
+" EasyMotion parms
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
 " Bi-directional find motion
@@ -316,7 +337,7 @@ let delimitMate_jump_expansion = 1
 let g:vimwiki_hl_cb_checked = 1
 
 let g:vimwiki_list = [{'path': '~/vimwiki/default', 'auto_export': 0,
-  \ 'path_html': '~/vimwiki/default/html/'}, 
+  \ 'path_html': '~/vimwiki/default/html/'},
   \ {'path': '~/vimwiki/ctp120_test/', 'path_html': '~/vimwiki/ctp120_test/html/'}]
 
 autocmd BufEnter *.wiki exe 'nnoremap <F5> :VimwikiAll2HTML<CR>:Vimwiki2HTMLBrowse<CR>:syn on<CR>'
