@@ -56,7 +56,7 @@ Plugin 'Raimondi/delimitMate'
 " Plugin 'scrooloose/syntastic'
 Plugin 'w0rp/ale'
 Plugin 'tpope/vim-endwise'
-Plugin 'Lokaltog/vim-easymotion'
+" Plugin 'Lokaltog/vim-easymotion'
 Plugin 'davdai01/jcl.vim'
 Plugin 'moll/vim-node'
 Plugin 'mxw/vim-jsx'
@@ -69,6 +69,7 @@ Plugin 'davdai01/nerdtree-zos-plugin'
 " Plugin 'mattn/webapi-vim'
 " Plugin 'mattn/gist-vim'
 Plugin 'vimwiki/vimwiki'
+Plugin 'leafgarland/typescript-vim'
 Plugin 'diepm/vim-rest-console'
 Plugin 'rking/ag.vim'
 Plugin 'godlygeek/tabular'
@@ -165,8 +166,8 @@ endfunction
 
 "set go=
 " colo industry
-" colo desert
-colo molokai
+colo desert
+" colo molokai
 
 sy on
 set sw=2
@@ -298,29 +299,29 @@ command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 let g:asyncrun_open = 10
 nnoremap <F10> :call asyncrun#quickfix_toggle(10)<cr>
 
-" EasyMotion parms
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
-
-" Bi-directional find motion
-" Jump to anywhere you want with minimal keystrokes, with just one key
-" binding.
-" `s{char}{label}`
-nmap f <Plug>(easymotion-s)
-" or
-" `s{char}{char}{label}`
-" Need one more keystroke, but on average, it may be more comfortable.
-nmap f <Plug>(easymotion-s2)
-
+" " EasyMotion parms
+" let g:EasyMotion_do_mapping = 0 " Disable default mappings
 "
-" Turn on case insensitive feature
-let g:EasyMotion_smartcase = 1
+" " Bi-directional find motion
+" " Jump to anywhere you want with minimal keystrokes, with just one key
+" " binding.
+" " `s{char}{label}`
+" nmap f <Plug>(easymotion-s)
+" " or
+" " `s{char}{char}{label}`
+" " Need one more keystroke, but on average, it may be more comfortable.
+" nmap f <Plug>(easymotion-s2)
+"
+" "
+" " Turn on case insensitive feature
+" let g:EasyMotion_smartcase = 1
 
 " let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 "
 " let g:syntastic_javascript_checkers = ['eslint']
 
 au BufEnter *.md,*.markdown setfiletype markdown
-au BufEnter .eslintrc setfiletype json
+au BufEnter *.eslintrc setfiletype json
 
 autocmd FileType markdown setlocal spell
 
