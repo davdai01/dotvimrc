@@ -75,7 +75,8 @@ Plugin 'rking/ag.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
+" Plugin 'xolox/vim-easytags'
+Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'skywind3000/asyncrun.vim'
 Plugin 'mustache/vim-mustache-handlebars'
 " Plugin 'sindresorhus/vim-xo'
@@ -205,17 +206,11 @@ let mapleader = ","
 
 nnoremap <leader><space> :noh<cr>
 
-" " ctags
-" let g:auto_ctags = 1
-" let g:auto_ctags_directory_list=['.git', '.svn']
-" let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
-" let g:auto_ctags_filetype_mode = 1
-
-let g:easytags_autorecurse = 1
-" set tags=./tags;
-" let g:easytags_dynamic_files = 1
-let g:easytags_file = '~/.vim/tags'
-let g:easytags_auto_highlight = 0
+" let g:easytags_auto_highlight = 1
+" let g:easytags_async = 1
+" let g:easytags_by_filetype = '~/.vim/tags'
+" let g:easytags_on_cursorhold = 1
+" let g:easytags_auto_update = 1
 
 map <C-d> :NERDTreeToggle<CR>
 map <C-o> :ConqueTermSplit bash<CR>
@@ -255,6 +250,7 @@ nnoremap <c-u> :tabnext<cr>
 vnoremap <c-u> :tabnext<cr>
 inoremap <c-u> <Esc>:tabnext<cr>
 
+
 com! FormatJSON %!python -m json.tool
 
 set backspace=2
@@ -265,16 +261,11 @@ set backspace=indent,eol,start
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%{fugitive#statusline()}
+set statusline+=%{gutentags#statusline()}
 set statusline+=%*
 let g:ag_working_path_mode="r"
 
-" let g:syntastic_always_populate_loc_list = 0
-" let g:syntastic_auto_loc_list = 0
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_lua_checkers = ["luac", "luacheck"]
-" let g:syntastic_lua_luacheck_args = "--no-unused-args"
-" " let g:syntastic_javascript_checkers = ['xo']
+let g:gutentags_project_root = ['Makefile']
 
 " ale.vim parms
 let g:ale_fixers = {
