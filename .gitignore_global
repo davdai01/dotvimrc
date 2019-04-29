@@ -1,0 +1,7 @@
+# git config --global core.excludesfile ~/.gitignore_global
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
