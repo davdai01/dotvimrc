@@ -58,6 +58,7 @@ Plugin 'w0rp/ale'
 Plugin 'tpope/vim-endwise'
 " Plugin 'Lokaltog/vim-easymotion'
 Plugin 'davdai01/jcl.vim'
+Plugin 'vim-scripts/hlasm.vim'
 Plugin 'moll/vim-node'
 Plugin 'mxw/vim-jsx'
 " Plugin 'airblade/vim-gitgutter'
@@ -213,8 +214,8 @@ nnoremap <leader><space> :noh<cr>
 " let g:easytags_auto_update = 1
 
 map <C-d> :NERDTreeToggle<CR>
-map <C-o> :ConqueTermSplit bash<CR>
-map <C-i> :ConqueTermTab bash<CR>
+" map <C-o> :ConqueTermSplit bash<CR>
+" map <C-i> :ConqueTermTab bash<CR>
 
 map <F2> :call ApplyMyCOBOLTag()<CR>
 map <F8> <Plug>(ale_fix)
@@ -243,6 +244,15 @@ let g:ctrlp_working_path_mode = 'ra'
 " let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'  " Windows
 " let g:ctrlp_user_command = 'find %s -type f'  " Linux
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'  " Linux
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 
 let g:user_emmet_leader_key='<C-e>'
 
@@ -259,7 +269,6 @@ set backspace=indent,eol,start
 " let g:SuperTabDefaultCompletionType = "context"
 
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%{fugitive#statusline()}
 set statusline+=%{gutentags#statusline()}
 set statusline+=%*
@@ -313,6 +322,7 @@ nnoremap <F10> :call asyncrun#quickfix_toggle(10)<cr>
 
 au BufEnter *.md,*.markdown setfiletype markdown
 au BufEnter *.eslintrc setfiletype json
+au BufEnter *.s setfiletype hlasm
 
 autocmd FileType markdown setlocal spell
 
