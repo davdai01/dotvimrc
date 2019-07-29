@@ -237,6 +237,12 @@ vnoremap <C-C> "*y
 map <C-v> "*p
 imap <C-v> <C-r>*
 
+if &diff
+  set cursorline
+  map ] ]c
+  map [ [c
+endif
+
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
