@@ -77,7 +77,8 @@ Plugin 'godlygeek/tabular'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'xolox/vim-misc'
 " Plugin 'xolox/vim-easytags'
-Plugin 'ludovicchabant/vim-gutentags'
+" tags are taking too much disk storage
+" Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'skywind3000/asyncrun.vim'
 Plugin 'mustache/vim-mustache-handlebars'
 " Plugin 'sindresorhus/vim-xo'
@@ -276,11 +277,11 @@ set backspace=indent,eol,start
 
 set statusline+=%#warningmsg#
 set statusline+=%{fugitive#statusline()}
-set statusline+=%{gutentags#statusline()}
+" set statusline+=%{gutentags#statusline()}
 set statusline+=%*
 let g:ag_working_path_mode="r"
 
-let g:gutentags_project_root = ['Makefile']
+" let g:gutentags_project_root = ['Makefile']
 
 " ale.vim parms
 let g:ale_fixers = {
