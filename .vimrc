@@ -244,6 +244,8 @@ if &diff
   map [ [c
 endif
 
+" vim-json
+let g:vim_json_syntax_conceal = 0
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
