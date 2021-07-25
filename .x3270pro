@@ -1,0 +1,26 @@
+x3270.model: 3279-5
+x3270.oversize: 160x48
+
+! Use the 'foo' keymap, defined below
+x3270.keymap: foo
+
+! Definition of the 'foo' keymap
+x3270.keymap.foo: \
+ <Key>`: Enter()\n\
+ <Key>Return: Newline()\n\
+ <Key>End: EraseEOF()\n\
+ <Key>Escape: Attn()\n\
+ Ctrl<Key>c: Clear()\n\
+ Ctrl<Key>i: ToggleInsert()\n\
+ Ctrl<Key>x: Disconnect()
+! File updated Sun Jul 25 13:17:42 2021 by x3270 v4.0ga14 Sun Jul 25 04:14:57 UTC 2021 daviddai
+! toggles (-set, -clear)
+x3270.scrollBar: false
+x3270.crosshair: true
+x3270.visibleControl: false
+x3270.overlayPaste: true
+x3270.insertMode: false
+! emulator font  (-efont)
+x3270.emulatorFont: -misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-1
+! color scheme  (-scheme)
+x3270.colorScheme: default
