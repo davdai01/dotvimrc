@@ -1,0 +1,29 @@
+c3270.model: 3279-5
+c3270.oversize: 160x48
+
+! Use the 'foo' keymap, defined below
+c3270.keymap: foo
+
+! Definition of the 'foo' keymap
+c3270.keymap.foo: \
+ <Key>U+00A1: PF(1)\n\
+ <Key>U+2122: PF(2)\n\
+ <Key>U+00A3: PF(3)\n\
+ <Key>U+00A2: PF(4)\n\
+ <Key>U+221E: PF(5)\n\
+ <Key>U+00A7: PF(6)\n\
+ <Key>U+00B6: PF(7)\n\
+ <Key>U+2022: PF(8)\n\
+ <Key>U+00AA: PF(9)\n\
+ <Key>U+00BA: PF(10)\n\
+ <Key>U+2013: PF(11)\n\
+ <Key>U+2260: PF(12)\n\
+ <Key>`: ENTER\n\
+ <Key>Return: Newline()\n\
+ <Key>End: EraseEOF()\n\
+ <Key>Escape: Attn()\n\
+ Ctrl<Key>e: Escape()\n\
+ Ctrl<Key>c: Clear()\n\
+ Ctrl<Key>i: ToggleInsert()\n\
+ <Key>Delete: BackSpace\n\
+ Ctrl<Key>x: Disconnect()
