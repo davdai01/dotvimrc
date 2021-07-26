@@ -197,7 +197,9 @@ if has("gui_running")
   set guioptions -=m
   set guioptions -=T
   " set guifont=Ubuntu\ Mono\ 12
-  set guifont=Bitstream\ Vera\ Sans\ Mono:h16
+  " set guifont=Bitstream\ Vera\ Sans\ Mono:h16
+  " set guifont=Monaco:h16
+  set gfn=Menlo-Regular:h20
 endif
 
 set noswapfile
