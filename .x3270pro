@@ -1,5 +1,10 @@
-x3270.model: 3279-5
-x3270.oversize: 160x48
+! For built-in display
+x3270.model: 3279-3
+x3270.oversize: 160x34
+
+! For 2k resolution
+! x3270.model: 3279-5
+! x3270.oversize: 160x48
 
 ! Use the 'foo' keymap, defined below
 x3270.keymap: foo
